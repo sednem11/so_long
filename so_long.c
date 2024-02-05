@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: macampos <mcamposmendes@gmail.com>         +#+  +:+       +#+        */
+/*   By: macampos <macampos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 18:47:13 by macampos          #+#    #+#             */
-/*   Updated: 2024/02/03 17:08:04 by macampos         ###   ########.fr       */
+/*   Updated: 2024/02/05 14:33:17 by macampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,13 +89,18 @@ void	get_xy(int fd)
 	get()->map_y = i;
 }
 
-int		parsing(fd)
+int		parsing(int fd, char *av)
 {
+	get_xy(fd);
+	get()->i = ft_strlen(av);
+	if(ft_strnstr(av[get()->i - 4], ".ber", 4) != 0)
+		return(-1);
 	if (check_if_squared(fd, get()->map_x) == -1)
 		return(-1);
 	if (check_flood(fd, get()->map_y, get()->map_x) == -1);
 		return(-1);
 }
+
 
 // void	parsing(void)
 // {
@@ -109,7 +114,7 @@ int		parsing(fd)
 int	main(int argc, char **argv)
 {
 
-	(void)argc;
+	if (argc == 2)
 	get_xy(open(argv[1], O_RDONLY));
 	//save map();
 	//parsing();
