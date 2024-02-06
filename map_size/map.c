@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_size_y.c                                       :+:      :+:    :+:   */
+/*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: macampos <macampos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/27 19:00:28 by macampos          #+#    #+#             */
-/*   Updated: 2024/02/06 13:43:52 by macampos         ###   ########.fr       */
+/*   Created: 2024/02/06 12:17:10 by macampos          #+#    #+#             */
+/*   Updated: 2024/02/06 14:46:11 by macampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,21 +19,18 @@ t_data	*get(void)
 	return (&data);
 }
 
-void	get_xy(int fd)
+void	map(int fd)
 {
-	int		i;
-	char	*temp;
+	char	**temp;
 
-	i = 0;
-	temp = NULL;
+	get()->j = 0;
 	while (1)
 	{
-		temp = get_next_line(fd);
-		if (!temp)
+		temp[get()->j] = get_next_line(fd);
+		get()->map[get()->j] = (char *)malloc(get()->map_x + 1);
+		if (!temp[get()->j])
 			break ;
-		get()->map_x = ft_strlen(temp);
-		free (temp);
-		i++;
+		get()->j++;
 	}
-	get()->map_y = i;
+	get()->map = (char *)malloc(get()->j + 1);
 }

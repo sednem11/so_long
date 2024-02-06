@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_size_y.c                                       :+:      :+:    :+:   */
+/*   cordinates.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: macampos <macampos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/27 19:00:28 by macampos          #+#    #+#             */
-/*   Updated: 2024/02/06 13:43:52 by macampos         ###   ########.fr       */
+/*   Created: 2024/02/06 11:43:09 by macampos          #+#    #+#             */
+/*   Updated: 2024/02/06 13:47:04 by macampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,21 +19,26 @@ t_data	*get(void)
 	return (&data);
 }
 
-void	get_xy(int fd)
+int	player_cordinates(int fd)
 {
-	int		i;
 	char	*temp;
 
-	i = 0;
-	temp = NULL;
+	get()->i = 0;
+	get()->j = 0;
 	while (1)
 	{
 		temp = get_next_line(fd);
 		if (!temp)
 			break ;
-		get()->map_x = ft_strlen(temp);
+		while (temp[get()->i])
+		{
+			if (temp[get()->i] == "P")
+			{
+				get()->px = get()->i;
+				get()->py = get()->j;
+			}
+		}
+		get()->j++;
 		free (temp);
-		i++;
 	}
-	get()->map_y = i;
 }
