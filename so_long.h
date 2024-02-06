@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: macampos <macampos@student.42.fr>          +#+  +:+       +#+        */
+/*   By: macampos <mcamposmendes@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 18:48:24 by macampos          #+#    #+#             */
-/*   Updated: 2024/02/05 14:30:23 by macampos         ###   ########.fr       */
+/*   Updated: 2024/02/05 16:40:38 by macampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,12 @@ typedef struct	data
 {
 	int		map_y;
 	int		map_x;
+	int		player;
+	int		colectable;
+	int		exit;
 	int		i;
 }	t_data;
 
-void	map_size_y(int fd);
+void	get_xy(int fd);
 
 #endif
