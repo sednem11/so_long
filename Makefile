@@ -3,26 +3,26 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: macampos <macampos@student.42.fr>          +#+  +:+       +#+         #
+#    By: macampos <mcamposmendes@gmail.com>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/27 18:38:34 by macampos          #+#    #+#              #
-#    Updated: 2024/01/27 18:46:52 by macampos         ###   ########.fr        #
+#    Updated: 2024/02/13 17:27:10 by macampos         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 Name = so_long
 
-SRCS =
+SRCS = so_long.c parcing_helpper.c mlx_handler/mlx.c map_size/map_size_y.c map_size/map.c cordinates/cordinates.c  \
 
-OBJS = $(SRCS.o:=.o)
+OBJS = $(SRCS:.c=.o)
 
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Wextra -Werror
 
 CC = cc
 
 $(NAME): $(OBJS)
 		$(MAKE) -C ./libft
-		$(CC) $(CFLAGS) -o $(NAME) $(OBJS) ./libft/libft.a -Llibft -lft
+		$(CC) $(CFLAGS) -o $(NAME) $(OBJS) ./libft/libft.a -Llibft -lft ./minilibx-linux/libmlx.a
 
 all: $(NAME)
 
@@ -35,3 +35,5 @@ fclean:	clean
 			rm -rf $(NAME)
 
 re:		fclean all
+
+.PHONY: all clean fclean re

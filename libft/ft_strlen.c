@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: macampos <macampos@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: macampos <mcamposmendes@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 12:44:23 by macampos          #+#    #+#             */
-/*   Updated: 2023/12/05 14:24:36 by macampos         ###   ########.fr       */
+/*   Updated: 2024/02/08 22:08:11 by macampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

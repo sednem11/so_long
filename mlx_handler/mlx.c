@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_size_y.c                                       :+:      :+:    :+:   */
+/*   mlx.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: macampos <mcamposmendes@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/27 19:00:28 by macampos          #+#    #+#             */
-/*   Updated: 2024/02/08 22:29:21 by macampos         ###   ########.fr       */
+/*   Created: 2024/02/08 11:52:03 by macampos          #+#    #+#             */
+/*   Updated: 2024/02/08 22:23:40 by macampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,20 +19,9 @@ t_data	*get(void)
 	return (&data);
 }
 
-void	get_xy(int fd)
+void	mlx_start()
 {
-	int		i;
-	char	*temp;
-
-	i = 0;
-	while (1)
-	{
-		temp = get_next_line(fd);
-		if (!temp)
-			break ;
-		get()->map_x = ft_strlen(temp);
-		free (temp);
-		i++;
-	}
-	get()->map_y = i;
+    get()->mlx = mlx_init();
+	get()->window = mlx_new_window(get()->mlx, 100, 100, "so_long");
+	get()->image = mlx_new_image(get()->mlx, 5, 5);
 }

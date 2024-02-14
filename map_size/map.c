@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: macampos <macampos@student.42.fr>          +#+  +:+       +#+        */
+/*   By: macampos <mcamposmendes@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 12:17:10 by macampos          #+#    #+#             */
-/*   Updated: 2024/02/06 14:46:11 by macampos         ###   ########.fr       */
+/*   Updated: 2024/02/08 22:30:52 by macampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../so_long.h"
 
 t_data	*get(void)
 {
@@ -24,6 +24,7 @@ void	map(int fd)
 	char	**temp;
 
 	get()->j = 0;
+	temp = NULL;
 	while (1)
 	{
 		temp[get()->j] = get_next_line(fd);
@@ -32,5 +33,5 @@ void	map(int fd)
 			break ;
 		get()->j++;
 	}
-	get()->map = (char *)malloc(get()->j + 1);
+	get()->map = (char **)malloc(get()->j + 1);
 }
