@@ -3,25 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   mlx.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: macampos <mcamposmendes@gmail.com>         +#+  +:+       +#+        */
+/*   By: macampos <macampos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 11:52:03 by macampos          #+#    #+#             */
-/*   Updated: 2024/02/08 22:23:40 by macampos         ###   ########.fr       */
+/*   Updated: 2024/02/15 21:06:58 by macampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-t_data	*get(void)
-{
-	static t_data	data;
-
-	return (&data);
-}
-
 void	mlx_start()
 {
-    get()->mlx = mlx_init();
-	get()->window = mlx_new_window(get()->mlx, 100, 100, "so_long");
-	get()->image = mlx_new_image(get()->mlx, 5, 5);
+	get()->mlx = mlx_init();
+	get()->window = mlx_new_window(get()->mlx, 700, 700, "so_long");
+	get()->image = mlx_new_image(get()->mlx, 20, 20);
+	mlx_loop(get()->mlx);
 }

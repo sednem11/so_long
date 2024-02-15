@@ -3,21 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   map_size_y.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: macampos <mcamposmendes@gmail.com>         +#+  +:+       +#+        */
+/*   By: macampos <macampos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 19:00:28 by macampos          #+#    #+#             */
-/*   Updated: 2024/02/08 22:29:21 by macampos         ###   ########.fr       */
+/*   Updated: 2024/02/14 17:01:09 by macampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
-
-t_data	*get(void)
-{
-	static t_data	data;
-
-	return (&data);
-}
 
 void	get_xy(int fd)
 {

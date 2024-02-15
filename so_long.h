@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: macampos <mcamposmendes@gmail.com>         +#+  +:+       +#+        */
+/*   By: macampos <macampos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 18:48:24 by macampos          #+#    #+#             */
-/*   Updated: 2024/02/08 22:37:33 by macampos         ###   ########.fr       */
+/*   Updated: 2024/02/15 20:57:51 by macampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,15 @@ typedef struct data
 	void	*window;
 }		t_data;
 
+t_data	*get(void);
+
 void	get_xy(int fd);
 void	map(int fd);
 void	floodfill(char **map, int x, int y);
-int		player_colectable_exit(int fd);
+int		player_colectable_exit();
 int		check_walls(int fd, int y, int x);
 int		check_if_squared(int fd, int x);
 void	mlx_start();
-void	player_cordinates(int fd);
+void	player_cordinates();
 
 #endif

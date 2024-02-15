@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: macampos <mcamposmendes@gmail.com>         +#+  +:+       +#+        */
+/*   By: macampos <macampos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 18:47:13 by macampos          #+#    #+#             */
-/*   Updated: 2024/02/13 17:29:04 by macampos         ###   ########.fr       */
+/*   Updated: 2024/02/15 20:52:26 by macampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../so_long.h"
 
 t_data	*get(void)
 {
@@ -46,14 +46,24 @@ void	parsing(int fd, char *av)
 		perror("map doesnt have all walls");
 		exit(1);
 	}
-	if (player_colectable_exit(fd) == -1)
+	if (player_colectable_exit() == -1)
 	{
-		perror("to many exits/players");
+		perror("to many or none exits/players");
 		exit(1);
 	}
+	player_cordinates();
 	floodfill(get()->map, get()->px, get()->py);
 	if (get()->c != get()->colectable || get()->e != get()->exit)
 		exit(1);
+}
+
+void print_map(char **map)
+{
+	int i;
+
+	i = 0;
+	while (map[i])
+		ft_printf("%d", map[i++]);
 }
 
 int	main(int argc, char **argv)
@@ -62,6 +72,7 @@ int	main(int argc, char **argv)
 	get_xy(open(argv[1], O_RDONLY));
 	map(open(argv[1], O_RDONLY));
 	parsing(open(argv[1], O_RDONLY), argv[1]);
+	print_map(get()->map);
 	mlx_start();
 	//funcao de printar o mapa no terminal
 	//funcaos dos movimentos

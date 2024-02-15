@@ -3,21 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parcing_helpper.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: macampos <mcamposmendes@gmail.com>         +#+  +:+       +#+        */
+/*   By: macampos <macampos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 14:49:43 by macampos          #+#    #+#             */
-/*   Updated: 2024/02/08 22:23:00 by macampos         ###   ########.fr       */
+/*   Updated: 2024/02/15 21:05:52 by macampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
-
-t_data	*get(void)
-{
-	static t_data	data;
-
-	return (&data);
-}
+#include "../so_long.h"
 
 int	check_if_squared(int fd, int x)
 {
@@ -42,24 +35,23 @@ int	check_walls(int fd, int y, int x)
 
 	i = -1;
 	temp = get_next_line(fd);
-	while (temp[++i])
+	while (temp && temp[++i])
 	{
-		if (temp[i] != 1)
+		if (temp[i] != '1')
 			return (-1);
 	}
 	free(temp);
-	i = 2;
-	while (i != y)
+	i = 1;
+	while (temp && ++i != y)
 	{
 		temp = get_next_line(fd);
-		if (temp[1] != 1 || temp[x] != 1)
+		if (temp[0] != '1' || temp[x] != '1')
 			return (-1);
 		free (temp);
-		i++;
 	}
 	i = -1;
 	temp = get_next_line(fd);
-	while (temp[++i])
+	while (temp && temp[++i])
 	{
 		if (temp[i] != 1)
 			return (-1);
@@ -67,45 +59,44 @@ int	check_walls(int fd, int y, int x)
 	return (0);
 }
 
-int	player_colectable_exit(int fd)
+int	player_colectable_exit()
 {
-	char	*temp;
-
 	get()->player = 0;
 	get()->colectable = 0;
 	get()->exit = 0;
-	get()->i = 0;
-	while (1)
+	get()->j = 0;
+	while (get()->j < get()->map_y)
 	{
-		temp = get_next_line(fd);
-		if (!temp)
-			break ;
-		while (temp[get()->i])
+		get()->i = 0;
+		while (get()->i < get()->map_x)
 		{
-			if (temp[get()->i] == 'P')
+			ft_printf("%c", get()->map[get()->j][get()->i]);
+			if (get()->map[get()->j][get()->i] == 'P')
 				get()->player++;
-			if (temp[get()->i] == 'C')
+			if (get()->map[get()->j][get()->i] == 'C')
 				get()->colectable++;
-			if (temp[get()->i] == 'E')
+			if (get()->map[get()->j][get()->i] == 'E')
 				get()->exit++;
 			get()->i++;
 		}
-		free(temp);
+		ft_printf("\n");
+		get()->j++;
 	}
 	if (get()->player != 1 || get()->exit != 1)
 		return (-1);
-	return(0);
+	return (0);
 }
 
 void	floodfill(char **map, int x, int y)
 {
-	map[get()->py][get()->px] = 'y';
-	if (map[y][x] == '1' || map[y][x]
+	ft_printf("%c\n", map[y][x]);
+	if (map[y][x] == '1' || !map[y][x]
 		|| map[y][x] == 'e' || map[y][x] == 'c'
 		|| map[y][x] == 'p' || map[y][x] == 'y'
 		|| y < 0 || y >= get()->map_y || x < 0
 		|| x >= get()->map_x)
 		return ;
+	map[get()->py][get()->px] = 'y';
 	if (map[y][x] == 'C')
 	{
 		get()->c++;
@@ -116,6 +107,8 @@ void	floodfill(char **map, int x, int y)
 		get()->e++;
 		map[y][x] = 'e';
 	}
+	if(map[y][x] == '0')
+		map[y][x] = '1';
 	floodfill(map, (x + 1), y);
 	floodfill(map, (x - 1), y);
 	floodfill(map, x, (y + 1));

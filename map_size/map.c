@@ -3,35 +3,48 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: macampos <mcamposmendes@gmail.com>         +#+  +:+       +#+        */
+/*   By: macampos <macampos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 12:17:10 by macampos          #+#    #+#             */
-/*   Updated: 2024/02/08 22:30:52 by macampos         ###   ########.fr       */
+/*   Updated: 2024/02/14 20:02:35 by macampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-t_data	*get(void)
-{
-	static t_data	data;
-
-	return (&data);
-}
-
 void	map(int fd)
 {
-	char	**temp;
+	char	*temp;
 
 	get()->j = 0;
 	temp = NULL;
-	while (1)
+	get()->map = (char **)ft_calloc(get()->map_y + 1, sizeof(char *));
+	while(get()->j < get()->map_y)
 	{
-		temp[get()->j] = get_next_line(fd);
-		get()->map[get()->j] = (char *)malloc(get()->map_x + 1);
-		if (!temp[get()->j])
-			break ;
+		temp = get_next_line(fd);
+		get()->map[get()->j] = temp;
+		free(temp);
 		get()->j++;
 	}
-	get()->map = (char **)malloc(get()->j + 1);
 }
+
+
+/*
+
+get()->map == {
+	"11111111111",
+	"10000000C01",
+	"10P00000001",
+	"10000000001",
+	"10000000E01",
+	"10000000001",
+	"10000000001",
+	"10000000001",
+	"10000000001",
+	"10000000001",
+	"11111111111",
+	NULL
+}
+
+
+*/

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: macampos <macampos@student.42lisboa.com    +#+  +:+       +#+         #
+#    By: macampos <macampos@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/03 10:58:39 by macampos          #+#    #+#              #
-#    Updated: 2023/12/05 17:30:06 by macampos         ###   ########.fr        #
+#    Updated: 2024/02/14 20:01:36 by macampos         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 

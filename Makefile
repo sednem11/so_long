@@ -3,26 +3,30 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: macampos <mcamposmendes@gmail.com>         +#+  +:+       +#+         #
+#    By: macampos <macampos@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/27 18:38:34 by macampos          #+#    #+#              #
-#    Updated: 2024/02/13 17:27:10 by macampos         ###   ########.fr        #
+#    Updated: 2024/02/14 17:19:01 by macampos         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-Name = so_long
+NAME = so_long
 
-SRCS = so_long.c parcing_helpper.c mlx_handler/mlx.c map_size/map_size_y.c map_size/map.c cordinates/cordinates.c  \
+SRCS = main/so_long.c main/parcing_helpper.c mlx_handler/mlx.c map_size/map_size_y.c map_size/map.c cordinates/cordinates.c  \
 
 OBJS = $(SRCS:.c=.o)
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
+
+LIBFLAGS = -lXext -lX11
+LIB = minilibx-linux/libmlx_Linux.a
 
 CC = cc
 
 $(NAME): $(OBJS)
 		$(MAKE) -C ./libft
-		$(CC) $(CFLAGS) -o $(NAME) $(OBJS) ./libft/libft.a -Llibft -lft ./minilibx-linux/libmlx.a
+		$(MAKE) -C ./minilibx-linux
+		$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(LIB) $(LIBFLAGS) ./libft/libft.a -Llibft -lft
 
 all: $(NAME)
 

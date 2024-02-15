@@ -3,42 +3,33 @@
 /*                                                        :::      ::::::::   */
 /*   cordinates.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: macampos <mcamposmendes@gmail.com>         +#+  +:+       +#+        */
+/*   By: macampos <macampos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 11:43:09 by macampos          #+#    #+#             */
-/*   Updated: 2024/02/08 22:31:53 by macampos         ###   ########.fr       */
+/*   Updated: 2024/02/15 20:53:05 by macampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-t_data	*get(void)
+void	player_cordinates()
 {
-	static t_data	data;
+	char *temp;
 
-	return (&data);
-}
-
-void	player_cordinates(int fd)
-{
-	char	*temp;
-
-	get()->i = 0;
 	get()->j = 0;
-	while (1)
+	while (get()->j < get()->map_y)
 	{
-		temp = get_next_line(fd);
-		if (!temp)
-			break ;
-		while (temp[get()->i])
+		get()->i = 0;
+		temp = get()->map[get()->j];
+		while (get()->i < get()->map_x)
 		{
 			if (temp[get()->i] == 'P')
 			{
 				get()->px = get()->i;
 				get()->py = get()->j;
 			}
+			get()->i++;
 		}
 		get()->j++;
-		free (temp);
 	}
 }
