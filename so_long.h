@@ -6,7 +6,7 @@
 /*   By: macampos <macampos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 18:48:24 by macampos          #+#    #+#             */
-/*   Updated: 2024/02/15 20:57:51 by macampos         ###   ########.fr       */
+/*   Updated: 2024/02/16 22:36:41 by macampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,9 @@ void	get_xy(int fd);
 void	map(int fd);
 void	floodfill(char **map, int x, int y);
 int		player_colectable_exit();
-int		check_walls(int fd, int y, int x);
-int		check_if_squared(int fd, int x);
+void	check_if_squared();
 void	mlx_start();
 void	player_cordinates();
+void	 print_map(char **map);
 
 #endif

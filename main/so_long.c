@@ -6,7 +6,7 @@
 /*   By: macampos <macampos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 18:47:13 by macampos          #+#    #+#             */
-/*   Updated: 2024/02/15 20:52:26 by macampos         ###   ########.fr       */
+/*   Updated: 2024/02/16 23:11:25 by macampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,16 +36,7 @@ void	parsing(int fd, char *av)
 		perror("map is not .ber");
 		exit(1);
 	}
-	if (check_if_squared(fd, get()->map_x) == -1)
-	{
-		perror("map is not squared");
-		exit(1);
-	}
-	if (check_walls(fd, get()->map_y, get()->map_x) == -1)
-	{
-		perror("map doesnt have all walls");
-		exit(1);
-	}
+	check_if_squared();
 	if (player_colectable_exit() == -1)
 	{
 		perror("to many or none exits/players");
@@ -63,16 +54,18 @@ void print_map(char **map)
 
 	i = 0;
 	while (map[i])
-		ft_printf("%d", map[i++]);
+		ft_printf("%s", map[i++]);
+	printf("\n");
 }
 
 int	main(int argc, char **argv)
 {
-	if (argc == 2)
+	if (argc != 2)
+		return 0;
 	get_xy(open(argv[1], O_RDONLY));
 	map(open(argv[1], O_RDONLY));
-	parsing(open(argv[1], O_RDONLY), argv[1]);
 	print_map(get()->map);
+	parsing(open(argv[1], O_RDONLY), argv[1]);
 	mlx_start();
 	//funcao de printar o mapa no terminal
 	//funcaos dos movimentos

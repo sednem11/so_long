@@ -6,7 +6,7 @@
 /*   By: macampos <macampos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 12:17:10 by macampos          #+#    #+#             */
-/*   Updated: 2024/02/14 20:02:35 by macampos         ###   ########.fr       */
+/*   Updated: 2024/02/16 23:06:45 by macampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,18 @@
 void	map(int fd)
 {
 	char	*temp;
+	int j;
 
-	get()->j = 0;
-	temp = NULL;
+	j = 0;
 	get()->map = (char **)ft_calloc(get()->map_y + 1, sizeof(char *));
-	while(get()->j < get()->map_y)
+	temp = get_next_line(fd);
+	while(j < get()->map_y && temp)
 	{
+		get()->map[j] = temp;
+		j++;
 		temp = get_next_line(fd);
-		get()->map[get()->j] = temp;
-		free(temp);
-		get()->j++;
 	}
+	free(temp);
 }
 
 
