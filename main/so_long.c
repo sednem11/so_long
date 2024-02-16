@@ -6,7 +6,7 @@
 /*   By: macampos <macampos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 18:47:13 by macampos          #+#    #+#             */
-/*   Updated: 2024/02/16 23:11:25 by macampos         ###   ########.fr       */
+/*   Updated: 2024/02/16 23:22:12 by macampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,7 @@ void print_map(char **map)
 
 	i = 0;
 	while (map[i])
-		ft_printf("%s", map[i++]);
-	printf("\n");
+		ft_printf("%s\n", map[i++]);
 }
 
 int	main(int argc, char **argv)
