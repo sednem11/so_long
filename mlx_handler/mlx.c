@@ -6,7 +6,7 @@
 /*   By: macampos <macampos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 11:52:03 by macampos          #+#    #+#             */
-/*   Updated: 2024/02/20 18:58:36 by macampos         ###   ########.fr       */
+/*   Updated: 2024/02/21 15:28:58 by macampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,9 +80,10 @@ int		handel_input(int keysym, t_data *get())
 void	mlx_start()
 {
 	get()->mlx = mlx_init();
+	mlx_do_key_autorepeaton(get()->mlx);
 	get()->window = mlx_new_window(get()->mlx, 700, 700, "so_long");
 	mlx_key_hook(get()->window, handel_input2, get);
 	mlx_hook(get()->window, 2, (1L<<0), handel_input, get);
 	movement();
 	mlx_loop(get()->mlx);
-}      
+}
