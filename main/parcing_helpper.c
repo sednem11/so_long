@@ -6,7 +6,7 @@
 /*   By: macampos <macampos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 14:49:43 by macampos          #+#    #+#             */
-/*   Updated: 2024/02/16 23:12:25 by macampos         ###   ########.fr       */
+/*   Updated: 2024/02/20 15:53:16 by macampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@ void	check_if_squared()
 {
 	int		i;
 
-	i = 0;
-	while (i + 1 < get()->map_y)
+	i = 1;
+	while (i < get()->map_y)
 	{
-		if ((int)ft_strlen(get()->map[i + 1]) != (int)ft_strlen(get()->map[i]))
+		if ((int)ft_strlen(get()->map[i]) != (int)ft_strlen(get()->map[0]))
 			exit(1);
 		i++;
 	}

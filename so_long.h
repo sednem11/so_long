@@ -6,7 +6,7 @@
 /*   By: macampos <macampos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 18:48:24 by macampos          #+#    #+#             */
-/*   Updated: 2024/02/16 22:36:41 by macampos         ###   ########.fr       */
+/*   Updated: 2024/02/20 11:25:37 by macampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,10 @@ typedef struct data
 	void	*mlx;
 	void	*image;
 	void	*window;
+	int		w;
+	int		a;
+	int		s;
+	int		d;
 }		t_data;
 
 t_data	*get(void);
@@ -48,6 +52,7 @@ int		player_colectable_exit();
 void	check_if_squared();
 void	mlx_start();
 void	player_cordinates();
-void	 print_map(char **map);
+void	print_map(char **map);
+void	mlx_end();
 
 #endif

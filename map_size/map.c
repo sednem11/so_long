@@ -6,7 +6,7 @@
 /*   By: macampos <macampos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 12:17:10 by macampos          #+#    #+#             */
-/*   Updated: 2024/02/16 23:06:45 by macampos         ###   ########.fr       */
+/*   Updated: 2024/02/20 15:45:23 by macampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,12 @@ void	map(int fd)
 	temp = get_next_line(fd);
 	while(j < get()->map_y && temp)
 	{
-		get()->map[j] = temp;
+		get()->map[j] = ft_strtrim(temp, "\n ");
 		j++;
+		free(temp);
 		temp = get_next_line(fd);
 	}
+	get()->map[get()->map_y] = NULL;
 	free(temp);
 }
 
