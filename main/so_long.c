@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: macampos <macampos@student.42.fr>          +#+  +:+       +#+        */
+/*   By: macampos <mcamposmendes@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 18:47:13 by macampos          #+#    #+#             */
-/*   Updated: 2024/02/20 15:46:40 by macampos         ###   ########.fr       */
+/*   Updated: 2024/02/21 20:28:59 by macampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,13 @@ t_data	*get(void)
 	static t_data	data;
 
 	return (&data);
+}
+
+t_movementt	*movementt(void)
+{
+	static t_movementt	movementt;
+
+	return (&movementt);
 }
 
 void	parsing(int fd, char *av)

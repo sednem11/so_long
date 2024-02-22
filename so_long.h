@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: macampos <macampos@student.42.fr>          +#+  +:+       +#+        */
+/*   By: macampos <mcamposmendes@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 18:48:24 by macampos          #+#    #+#             */
-/*   Updated: 2024/02/20 11:25:37 by macampos         ###   ########.fr       */
+/*   Updated: 2024/02/21 20:39:30 by macampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,16 @@ typedef struct data
 
 t_data	*get(void);
 
+typedef struct	movementt
+{
+	int	w;
+	int	d;
+	int	s;
+	int	a;
+}		t_movementt;
+
+t_movementt	*movementt(void);
+
 void	get_xy(int fd);
 void	map(int fd);
 void	floodfill(char **map, int x, int y);
@@ -54,5 +64,6 @@ void	mlx_start();
 void	player_cordinates();
 void	print_map(char **map);
 void	mlx_end();
+void	movement();
 
 #endif
