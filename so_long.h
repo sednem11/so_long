@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: macampos <mcamposmendes@gmail.com>         +#+  +:+       +#+        */
+/*   By: macampos <macampos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 18:48:24 by macampos          #+#    #+#             */
-/*   Updated: 2024/02/21 20:39:30 by macampos         ###   ########.fr       */
+/*   Updated: 2024/02/24 20:18:40 by macampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,20 @@
 # include <stdio.h>
 # include <stdlib.h>
 
-typedef struct data
+# define SCALE 64
+
+typedef struct	s_image
+{
+	void	*img;
+	char	*image_pixel;
+	int		width;
+	int		height;
+	int		bits_per_pixel;
+	int		line_len;
+	int		endian;
+}		t_image;
+
+typedef struct s_data
 {
 	int		map_y;
 	int		map_x;
@@ -34,27 +47,18 @@ typedef struct data
 	int		p;
 	int		e;
 	char	**map;
+	t_image	**images;
 	void	*mlx;
-	void	*image;
 	void	*window;
-	int		w;
-	int		a;
-	int		s;
-	int		d;
+	int		width;
+	int		height;
 }		t_data;
 
 t_data	*get(void);
 
-typedef struct	movementt
-{
-	int	w;
-	int	d;
-	int	s;
-	int	a;
-}		t_movementt;
-
-t_movementt	*movementt(void);
-
+void	put_image_to_window(t_image **image, int x, int y);
+int		my_pixel_get(t_image **image, int x, int y);
+void	create_image_addr(t_image **image);
 void	get_xy(int fd);
 void	map(int fd);
 void	floodfill(char **map, int x, int y);
@@ -64,6 +68,7 @@ void	mlx_start();
 void	player_cordinates();
 void	print_map(char **map);
 void	mlx_end();
-void	movement();
+void	rendering_map();
+void	my_pixel_put(t_image **image, int x , int y, int color);
 
 #endif
