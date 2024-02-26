@@ -6,7 +6,7 @@
 /*   By: macampos <macampos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 18:47:13 by macampos          #+#    #+#             */
-/*   Updated: 2024/02/24 20:19:49 by macampos         ###   ########.fr       */
+/*   Updated: 2024/02/25 20:03:06 by macampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ int	main(int argc, char **argv)
 	get_xy(open(argv[1], O_RDONLY));
 	map(open(argv[1], O_RDONLY));
 	print_map(get()->map);
-	map(open(argv[1], O_RDONLY));
 	parsing(open(argv[1], O_RDONLY), argv[1]);
 	mlx_start();
 }

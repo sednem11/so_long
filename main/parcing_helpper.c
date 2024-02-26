@@ -6,7 +6,7 @@
 /*   By: macampos <macampos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 14:49:43 by macampos          #+#    #+#             */
-/*   Updated: 2024/02/20 15:53:16 by macampos         ###   ########.fr       */
+/*   Updated: 2024/02/25 16:44:33 by macampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	player_colectable_exit()
 
 void	floodfill(char **map, int x, int y)
 {
-	if (map[y][x] == '1'
+	if (map[y][x] == '1' || map[y][x] == '2'
 		|| map[y][x] == 'e' || map[y][x] == 'c'
 		|| map[y][x] == 'p' || map[y][x] == 'y')
 		return ;
@@ -71,7 +71,7 @@ void	floodfill(char **map, int x, int y)
 		map[y][x] = 'e';
 	}
 	if(map[y][x] == '0')
-		map[y][x] = '1';
+		map[y][x] = '2';
 	floodfill(map, (x + 1), y);
 	floodfill(map, (x - 1), y);
 	floodfill(map, x, (y + 1));

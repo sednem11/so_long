@@ -6,7 +6,7 @@
 /*   By: macampos <macampos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 18:48:24 by macampos          #+#    #+#             */
-/*   Updated: 2024/02/24 20:18:40 by macampos         ###   ########.fr       */
+/*   Updated: 2024/02/26 16:47:43 by macampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ typedef struct s_data
 t_data	*get(void);
 
 void	put_image_to_window(t_image **image, int x, int y);
-int		my_pixel_get(t_image **image, int x, int y);
+int		my_pixel_get(t_image **image, int x, int y, int positionx, int positiony);
 void	create_image_addr(t_image **image);
 void	get_xy(int fd);
 void	map(int fd);
@@ -70,5 +70,7 @@ void	print_map(char **map);
 void	mlx_end();
 void	rendering_map();
 void	my_pixel_put(t_image **image, int x , int y, int color);
+void	create_image_ptr(t_image **image, char *file);
+void	create_images();
 
 #endif

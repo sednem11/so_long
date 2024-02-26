@@ -6,17 +6,18 @@
 #    By: macampos <macampos@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/27 18:38:34 by macampos          #+#    #+#              #
-#    Updated: 2024/02/24 18:17:59 by macampos         ###   ########.fr        #
+#    Updated: 2024/02/26 16:47:30 by macampos         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
 
-SRCS = main/so_long.c main/parcing_helpper.c mlx_handler/mlx.c map_size/map_size_y.c map_size/map.c cordinates/cordinates.c mlx_handler/mlx_end.c  mlx_handler/rendering.c\
+SRCS = main/so_long.c main/parcing_helpper.c mlx_handler/mlx.c map_size/map_size_y.c map_size/map.c cordinates/cordinates.c mlx_handler/mlx_end.c  mlx_handler/rendering.c  \
+		mlx_handler/creating_images.c  \
 
 OBJS = $(SRCS:.c=.o)
 
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror -g #-fsanitize=address
 
 LIBFLAGS = -lXext -lX11
 LIB = minilibx-linux/libmlx_Linux.a
