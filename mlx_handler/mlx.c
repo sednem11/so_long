@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: macampos <mcamposmendes@gmail.com>         +#+  +:+       +#+        */
+/*   By: macampos <macampos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 11:52:03 by macampos          #+#    #+#             */
-/*   Updated: 2024/02/27 19:05:17 by macampos         ###   ########.fr       */
+/*   Updated: 2024/02/27 19:47:37 by macampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int		handel_input(int keysym)
 
 void	init_mlx_window()
 {
-	get()->width = get()->map_x * SCALE;
+	get()->width = ((get()->map_x - 1) * SCALE);
 	get()->height = get()->map_y * SCALE;
 	get()->window = mlx_new_window(get()->mlx, get()->width, get()->height, "so_long");
 }
@@ -75,11 +75,11 @@ void	init_mlx_images()
 	}
 	i = 0;
 	create_images();
-	while (i < 5)
-	{
-		create_image_addr(get()->images[i]);
-		i++;
-	}
+	// while (i < 5)
+	// {
+	// 	create_image_addr(get()->images[i]);
+	// 	i++;
+	// }
 }
 void	mlx_start()
 {
