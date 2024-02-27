@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: macampos <macampos@student.42.fr>          +#+  +:+       +#+        */
+/*   By: macampos <mcamposmendes@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 18:48:24 by macampos          #+#    #+#             */
-/*   Updated: 2024/02/26 16:47:43 by macampos         ###   ########.fr       */
+/*   Updated: 2024/02/27 18:29:57 by macampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 # include <stdlib.h>
 
 # define SCALE 64
+# define SCALE2 32
+# define SCALE3 32
 
 typedef struct	s_image
 {
@@ -57,8 +59,8 @@ typedef struct s_data
 t_data	*get(void);
 
 void	put_image_to_window(t_image **image, int x, int y);
-int		my_pixel_get(t_image **image, int x, int y, int positionx, int positiony);
-void	create_image_addr(t_image **image);
+int		my_pixel_get(t_image *image, int x, int y, int positionx, int positiony);
+void	create_image_addr(t_image *image);
 void	get_xy(int fd);
 void	map(int fd);
 void	floodfill(char **map, int x, int y);

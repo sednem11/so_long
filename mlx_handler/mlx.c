@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: macampos <macampos@student.42.fr>          +#+  +:+       +#+        */
+/*   By: macampos <mcamposmendes@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 11:52:03 by macampos          #+#    #+#             */
-/*   Updated: 2024/02/26 16:47:12 by macampos         ###   ########.fr       */
+/*   Updated: 2024/02/27 19:05:17 by macampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,14 @@ void	put_image_to_window(t_image **image, int x, int y)
 	mlx_put_image_to_window(get()->mlx, get()->window, (*image)->img, x, y);
 }
 
-int		my_pixel_get(t_image **image, int x , int y, int positionx, int positiony)
+int		my_pixel_get(t_image *image, int x , int y, int positionx, int positiony)
 {
 	int	offset;
 
-	y *= positiony;
-	x *= positionx;
-	offset = ((*image)->line_len * y) + (x * ((*image)->bits_per_pixel / 8));
-	return *(unsigned int *)((*image)->img + offset);
+	y += (positiony * SCALE3);
+	x += (positionx * SCALE2);
+	offset = (image->line_len * y) + (x * (image->bits_per_pixel / 8));
+	return *(unsigned int *)(image->image_pixel + offset);
 }
 
 void	my_pixel_put(t_image **image, int x , int y, int color)
@@ -67,17 +67,17 @@ void	init_mlx_images()
 	int	i;
 
 	i = 0;
-	get()->images = (t_image **)calloc(sizeof(t_image *), 5);
+	get()->images = (t_image **)malloc(sizeof(t_image *) * 5);
 	while (i < 5)
 	{
-		get()->images[i] = (t_image *)calloc(sizeof(t_image), 1);
+		get()->images[i] = (t_image *)malloc(sizeof(t_image));
 		i++;
 	}
 	i = 0;
 	create_images();
 	while (i < 5)
 	{
-		create_image_addr(&get()->images[i]);
+		create_image_addr(get()->images[i]);
 		i++;
 	}
 }
@@ -85,9 +85,8 @@ void	mlx_start()
 {
 	get()->mlx = mlx_init();
 	init_mlx_window();
-	ft_printf("%s\n", "AQUIIIIIII!!!!!!");
 	init_mlx_images();
-	ft_printf("%s\n", "AQUIIIIIII!!!!!!");
+	print_map(get()->map);
 	rendering_map();
 	mlx_hook(get()->window, 2, (1L<<0), handel_input, NULL);
 	mlx_loop(get()->mlx);
