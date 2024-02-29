@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: macampos <macampos@student.42.fr>          +#+  +:+       +#+        */
+/*   By: macampos <mcamposmendes@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 18:48:24 by macampos          #+#    #+#             */
-/*   Updated: 2024/02/27 19:28:03 by macampos         ###   ########.fr       */
+/*   Updated: 2024/02/28 19:27:34 by macampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,5 +74,6 @@ void	rendering_map();
 void	my_pixel_put(t_image **image, int x , int y, int color);
 void	create_image_ptr(t_image **image, char *file);
 void	create_images();
+void	change_player(int	direction);
 
 #endif

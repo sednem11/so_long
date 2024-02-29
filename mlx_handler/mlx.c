@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: macampos <macampos@student.42.fr>          +#+  +:+       +#+        */
+/*   By: macampos <mcamposmendes@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 11:52:03 by macampos          #+#    #+#             */
-/*   Updated: 2024/02/27 19:47:37 by macampos         ###   ########.fr       */
+/*   Updated: 2024/02/29 15:21:12 by macampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,14 @@ int		handel_input(int keysym)
 		return(0);
 	}
 	if (keysym == XK_w)
-		ft_printf("W\n");
+		change_player(1);
 	if (keysym == XK_a)
-		ft_printf("W\n");
+		change_player(2);
 	if (keysym == XK_s)
-		ft_printf("W\n");
+		change_player(3);
 	if (keysym == XK_d)
-		ft_printf("W\n");
+		change_player(4);
+	rendering_map();
 	return(1);
 }
 
@@ -75,11 +76,6 @@ void	init_mlx_images()
 	}
 	i = 0;
 	create_images();
-	// while (i < 5)
-	// {
-	// 	create_image_addr(get()->images[i]);
-	// 	i++;
-	// }
 }
 void	mlx_start()
 {
