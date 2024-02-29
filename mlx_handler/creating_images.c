@@ -6,7 +6,7 @@
 /*   By: macampos <mcamposmendes@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 17:27:09 by macampos          #+#    #+#             */
-/*   Updated: 2024/02/28 19:44:29 by macampos         ###   ########.fr       */
+/*   Updated: 2024/02/29 15:40:25 by macampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,6 @@ void	create_images()
 	create_image_ptr(&get()->images[0], "xpmfiles/tiles.xpm");
 	create_image_ptr(&get()->images[1], "xpmfiles/character.xpm");
 	create_image_ptr2(&get()->images[2], get()->map_x * SCALE, get()->map_y * SCALE);
+	create_image_ptr(&get()->images[3], "xpmfiles/GRASS-.xpm");
+	create_image_ptr(&get()->images[4], "xpmfiles/Treasure-.xpm");
 }

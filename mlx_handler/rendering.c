@@ -6,7 +6,7 @@
 /*   By: macampos <mcamposmendes@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 11:18:10 by macampos          #+#    #+#             */
-/*   Updated: 2024/02/29 15:11:09 by macampos         ###   ########.fr       */
+/*   Updated: 2024/02/29 15:44:25 by macampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,8 @@ void	rendering_map()
 				rendering(&get()->images[0], &get()->images[2], x, y, 3, 3);
 			if (get()->map[y][x] == 'y')
 				rendering(&get()->images[1], &get()->images[2], x, y, 0, 0);
+			if (get()->map[y][x] == 'c')
+				rendering(&get()->images[4], &get()->images[2], x, y, 6, 0);
 			x++;
 		}
 		x = 0;

@@ -6,7 +6,7 @@
 /*   By: macampos <mcamposmendes@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 11:52:03 by macampos          #+#    #+#             */
-/*   Updated: 2024/02/29 15:21:12 by macampos         ###   ########.fr       */
+/*   Updated: 2024/02/29 15:40:45 by macampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	init_mlx_images()
 	int	i;
 
 	i = 0;
-	get()->images = (t_image **)malloc(sizeof(t_image *) * 5);
+	get()->images = (t_image **)malloc(sizeof(t_image *) * 10);
 	while (i < 5)
 	{
 		get()->images[i] = (t_image *)malloc(sizeof(t_image));
