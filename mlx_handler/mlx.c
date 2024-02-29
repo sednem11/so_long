@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: macampos <mcamposmendes@gmail.com>         +#+  +:+       +#+        */
+/*   By: macampos <macampos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 11:52:03 by macampos          #+#    #+#             */
-/*   Updated: 2024/02/29 15:40:45 by macampos         ###   ########.fr       */
+/*   Updated: 2024/02/29 16:27:04 by macampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	init_mlx_images()
 	int	i;
 
 	i = 0;
-	get()->images = (t_image **)malloc(sizeof(t_image *) * 10);
+	get()->images = (t_image **)malloc(sizeof(t_image *) * 5);
 	while (i < 5)
 	{
 		get()->images[i] = (t_image *)malloc(sizeof(t_image));

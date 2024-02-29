@@ -6,11 +6,37 @@
 /*   By: macampos <macampos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 14:49:43 by macampos          #+#    #+#             */
-/*   Updated: 2024/02/25 16:44:33 by macampos         ###   ########.fr       */
+/*   Updated: 2024/02/29 19:57:03 by macampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
+
+int	player_colectable_exit2()
+{
+	get()->player2 = 0;
+	get()->colectable2 = 0;
+	get()->exit2 = 0;
+	get()->j = 0;
+	while (get()->j < get()->map_y)
+	{
+		get()->i = 0;
+		while (get()->i < get()->map_x)
+		{
+			if (get()->map[get()->j][get()->i] == 'y')
+				get()->player2++;
+			if (get()->map[get()->j][get()->i] == 'c')
+				get()->colectable2++;
+			if (get()->map[get()->j][get()->i] == 'e')
+				get()->exit2++;
+			get()->i++;
+		}
+		get()->j++;
+	}
+	if (get()->player != 1 || get()->exit != 1)
+		return (-1);
+	return (0);
+}
 
 void	check_if_squared()
 {

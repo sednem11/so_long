@@ -6,7 +6,7 @@
 #    By: macampos <macampos@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/27 18:38:34 by macampos          #+#    #+#              #
-#    Updated: 2024/02/26 16:47:30 by macampos         ###   ########.fr        #
+#    Updated: 2024/02/29 16:43:19 by macampos         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ SRCS = main/so_long.c main/parcing_helpper.c mlx_handler/mlx.c map_size/map_size
 
 OBJS = $(SRCS:.c=.o)
 
-CFLAGS = -Wall -Wextra -Werror -g #-fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address
 
 LIBFLAGS = -lXext -lX11
 LIB = minilibx-linux/libmlx_Linux.a

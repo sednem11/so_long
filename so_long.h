@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: macampos <mcamposmendes@gmail.com>         +#+  +:+       +#+        */
+/*   By: macampos <macampos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 18:48:24 by macampos          #+#    #+#             */
-/*   Updated: 2024/02/28 19:27:34 by macampos         ###   ########.fr       */
+/*   Updated: 2024/02/29 19:35:11 by macampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,9 @@ typedef struct s_data
 	int		player;
 	int		colectable;
 	int		exit;
+	int		player2;
+	int		colectable2;
+	int		exit2;
 	int		i;
 	int		j;
 	int		px;
@@ -75,5 +78,6 @@ void	my_pixel_put(t_image **image, int x , int y, int color);
 void	create_image_ptr(t_image **image, char *file);
 void	create_images();
 void	change_player(int	direction);
+int		player_colectable_exit2();
 
 #endif

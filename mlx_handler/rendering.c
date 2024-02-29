@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rendering.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: macampos <mcamposmendes@gmail.com>         +#+  +:+       +#+        */
+/*   By: macampos <macampos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 11:18:10 by macampos          #+#    #+#             */
-/*   Updated: 2024/02/29 15:44:25 by macampos         ###   ########.fr       */
+/*   Updated: 2024/02/29 20:00:57 by macampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,29 +72,42 @@ void	rendering(t_image **image, t_image **image2, int positionx, int positiony, 
 	}
 }
 
+void	check_exit(int y, int x)
+{
+	if (get()->map[y][x] == 'e')
+	{
+		player_colectable_exit2();
+		ft_printf("%i\n", get()->colectable2);
+		if (get()->colectable2 == 0)
+		{
+			rendering(&get()->images[4], &get()->images[2], x, y, 12, 9);
+		}
+	}
+}
+
 void	rendering_map()
 {
 	int x;
 	int y;
 	
-	x = 0;
 	y = 0;
 	while (y < get()->map_y)
 	{
+		x = 0;
 		while (x < get()->map_x - 1)
 		{
-			ft_printf("%i\n", x);
 			if (get()->map[y][x] == '1')
-				rendering(&get()->images[0], &get()->images[2], x, y,  1, 1);
+				rendering(&get()->images[4], &get()->images[2], x, y, 12, 9);
 			if (get()->map[y][x] != '1')
-				rendering(&get()->images[0], &get()->images[2], x, y, 3, 3);
+				rendering(&get()->images[0], &get()->images[2], x, y, 2, 2);
 			if (get()->map[y][x] == 'y')
 				rendering(&get()->images[1], &get()->images[2], x, y, 0, 0);
 			if (get()->map[y][x] == 'c')
-				rendering(&get()->images[4], &get()->images[2], x, y, 6, 0);
+				rendering(&get()->images[3], &get()->images[2], x, y, 0, 5);
+			if (get()->map[y][x] == 'e')
+				check_exit(y, x);
 			x++;
 		}
-		x = 0;
 		y++;
 	}
 	mlx_put_image_to_window(get()->mlx, get()->window, get()->images[2]->img, 0, 0);
