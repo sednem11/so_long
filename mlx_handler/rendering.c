@@ -6,7 +6,7 @@
 /*   By: macampos <macampos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 11:18:10 by macampos          #+#    #+#             */
-/*   Updated: 2024/02/29 20:00:57 by macampos         ###   ########.fr       */
+/*   Updated: 2024/02/29 20:09:26 by macampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,11 @@ void	check_exit(int y, int x)
 		player_colectable_exit2();
 		ft_printf("%i\n", get()->colectable2);
 		if (get()->colectable2 == 0)
-		{
 			rendering(&get()->images[4], &get()->images[2], x, y, 12, 9);
+		if (get()->exit2 == 0 && get()->colectable2 == 0)
+		{
+			ft_printf("you WONN !!!!\n");
+			mlx_end();
 		}
 	}
 }
