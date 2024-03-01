@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   creating_images.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: macampos <macampos@student.42.fr>          +#+  +:+       +#+        */
+/*   By: macampos <mcamposmendes@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 17:27:09 by macampos          #+#    #+#             */
-/*   Updated: 2024/02/29 17:19:31 by macampos         ###   ########.fr       */
+/*   Updated: 2024/03/01 19:48:19 by macampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	create_image_addr(t_image *image)
 	if(!image->image_pixel)
 	{
 		ft_printf("image_pixel");
+		mlx_end();
 		exit(1);
 	}
 }
@@ -27,7 +28,8 @@ void	create_image_ptr(t_image **image, char *file)
 	(*image)->img = mlx_xpm_file_to_image(get()->mlx, file , &(*image)->width, &(*image)->height);
 	if(!(*image)->img)
 	{
-		ft_printf("ERROR");
+		ft_printf("ERROR\n");
+		mlx_end();
 		exit(1);
 	}
 	create_image_addr(*image);
@@ -36,6 +38,12 @@ void	create_image_ptr(t_image **image, char *file)
 void 	create_image_ptr2(t_image **image, int width, int height)
 {
 	(*image)->img = mlx_new_image(get()->mlx, width, height);
+	if(!(*image)->img)
+	{
+		ft_printf("ERROR\n");
+		mlx_end();
+		exit(1);
+	}
 	create_image_addr(*image);
 }
 

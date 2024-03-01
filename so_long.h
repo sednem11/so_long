@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: macampos <macampos@student.42.fr>          +#+  +:+       +#+        */
+/*   By: macampos <mcamposmendes@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 18:48:24 by macampos          #+#    #+#             */
-/*   Updated: 2024/02/29 19:35:11 by macampos         ###   ########.fr       */
+/*   Updated: 2024/03/01 19:03:10 by macampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ typedef struct s_data
 	int		player;
 	int		colectable;
 	int		exit;
+	int		ex;
+	int		ey;
 	int		player2;
 	int		colectable2;
 	int		exit2;
@@ -57,6 +59,7 @@ typedef struct s_data
 	void	*window;
 	int		width;
 	int		height;
+	int		moves;
 }		t_data;
 
 t_data	*get(void);

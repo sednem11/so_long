@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parcing_helpper.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: macampos <macampos@student.42.fr>          +#+  +:+       +#+        */
+/*   By: macampos <mcamposmendes@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 14:49:43 by macampos          #+#    #+#             */
-/*   Updated: 2024/02/29 19:57:03 by macampos         ###   ########.fr       */
+/*   Updated: 2024/03/01 19:39:33 by macampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,18 +23,21 @@ int	player_colectable_exit2()
 		get()->i = 0;
 		while (get()->i < get()->map_x)
 		{
-			if (get()->map[get()->j][get()->i] == 'y')
+			if (get()->map[get()->j][get()->i] == 'y' || get()->map[get()->j][get()->i] == 'a')
 				get()->player2++;
 			if (get()->map[get()->j][get()->i] == 'c')
 				get()->colectable2++;
-			if (get()->map[get()->j][get()->i] == 'e')
+			if (get()->map[get()->j][get()->i] == 'e' ||
+				get()->map[get()->j][get()->i] == 'a')
+			{
+				get()->ex = get()->i;
+				get()->ey = get()->j;
 				get()->exit2++;
+			}
 			get()->i++;
 		}
 		get()->j++;
 	}
-	if (get()->player != 1 || get()->exit != 1)
-		return (-1);
 	return (0);
 }
 
@@ -67,7 +70,11 @@ int	player_colectable_exit()
 			if (get()->map[get()->j][get()->i] == 'C')
 				get()->colectable++;
 			if (get()->map[get()->j][get()->i] == 'E')
+			{
+				get()->ex = get()->i;
+				get()->ey = get()->j;
 				get()->exit++;
+			}
 			get()->i++;
 		}
 		get()->j++;
@@ -81,7 +88,7 @@ void	floodfill(char **map, int x, int y)
 {
 	if (map[y][x] == '1' || map[y][x] == '2'
 		|| map[y][x] == 'e' || map[y][x] == 'c'
-		|| map[y][x] == 'p' || map[y][x] == 'y')
+		|| map[y][x] == 'p' || map[y][x] == 'y' || map[y][x] == 'f')
 		return ;
 	if (y > get()->map_y || x > get()->map_x || y < 0 || x < 0)
 		exit(1);
@@ -96,6 +103,8 @@ void	floodfill(char **map, int x, int y)
 		get()->e++;
 		map[y][x] = 'e';
 	}
+	if (map[y][x] == 'F')
+		map[y][x] = 'f';
 	if(map[y][x] == '0')
 		map[y][x] = '2';
 	floodfill(map, (x + 1), y);

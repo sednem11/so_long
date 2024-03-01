@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: macampos <macampos@student.42.fr>          +#+  +:+       +#+        */
+/*   By: macampos <mcamposmendes@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 11:52:03 by macampos          #+#    #+#             */
-/*   Updated: 2024/02/29 16:27:04 by macampos         ###   ########.fr       */
+/*   Updated: 2024/03/01 19:06:09 by macampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,6 @@ void	mlx_start()
 	get()->mlx = mlx_init();
 	init_mlx_window();
 	init_mlx_images();
-	print_map(get()->map);
 	rendering_map();
 	mlx_hook(get()->window, 2, (1L<<0), handel_input, NULL);
 	mlx_loop(get()->mlx);
