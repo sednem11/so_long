@@ -12,7 +12,7 @@
 
 #include "../so_long.h"
 
-int	player_colectable_exit2()
+int	player_colectable_exit2(void)
 {
 	get()->player2 = 0;
 	get()->colectable2 = 0;
@@ -23,12 +23,13 @@ int	player_colectable_exit2()
 		get()->i = 0;
 		while (get()->i < get()->map_x)
 		{
-			if (get()->map[get()->j][get()->i] == 'y' || get()->map[get()->j][get()->i] == 'a')
+			if (get()->map[get()->j][get()->i] == 'y'
+				|| get()->map[get()->j][get()->i] == 'a')
 				get()->player2++;
 			if (get()->map[get()->j][get()->i] == 'c')
 				get()->colectable2++;
-			if (get()->map[get()->j][get()->i] == 'e' ||
-				get()->map[get()->j][get()->i] == 'a')
+			if (get()->map[get()->j][get()->i] == 'e'
+				|| get()->map[get()->j][get()->i] == 'a')
 			{
 				get()->ex = get()->i;
 				get()->ey = get()->j;
@@ -41,9 +42,9 @@ int	player_colectable_exit2()
 	return (0);
 }
 
-void	check_if_squared()
+void	check_if_squared(void)
 {
-	int		i;
+	int	i;
 
 	i = 1;
 	while (i < get()->map_y)
@@ -54,7 +55,7 @@ void	check_if_squared()
 	}
 }
 
-int	player_colectable_exit()
+int	player_colectable_exit(void)
 {
 	get()->player = 0;
 	get()->colectable = 0;
@@ -86,9 +87,9 @@ int	player_colectable_exit()
 
 void	floodfill(char **map, int x, int y)
 {
-	if (map[y][x] == '1' || map[y][x] == '2'
-		|| map[y][x] == 'e' || map[y][x] == 'c'
-		|| map[y][x] == 'p' || map[y][x] == 'y' || map[y][x] == 'f')
+	if (map[y][x] == '1' || map[y][x] == '2' || map[y][x] == 'e'
+		|| map[y][x] == 'c' || map[y][x] == 'p' || map[y][x] == 'y'
+		|| map[y][x] == 'f')
 		return ;
 	if (y > get()->map_y || x > get()->map_x || y < 0 || x < 0)
 		exit(1);
@@ -105,7 +106,7 @@ void	floodfill(char **map, int x, int y)
 	}
 	if (map[y][x] == 'F')
 		map[y][x] = 'f';
-	if(map[y][x] == '0')
+	if (map[y][x] == '0')
 		map[y][x] = '2';
 	floodfill(map, (x + 1), y);
 	floodfill(map, (x - 1), y);

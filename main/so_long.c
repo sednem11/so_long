@@ -21,7 +21,7 @@ t_data	*get(void)
 
 void	parsing(int fd, char *av)
 {
-	const char *avv;
+	const char	*avv;
 
 	get_xy(fd);
 	get()->i = 0;
@@ -48,9 +48,9 @@ void	parsing(int fd, char *av)
 		exit(1);
 }
 
-void print_map(char **map)
+void	print_map(char **map)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (map[i])
@@ -60,7 +60,7 @@ void print_map(char **map)
 int	main(int argc, char **argv)
 {
 	if (argc != 2)
-		return 0;
+		return (0);
 	get_xy(open(argv[1], O_RDONLY));
 	map(open(argv[1], O_RDONLY));
 	print_map(get()->map);

@@ -24,7 +24,7 @@ void	get_xy(int fd)
 		if (!temp)
 			break ;
 		get()->map_x = ft_strlen(temp);
-		free (temp);
+		free(temp);
 		i++;
 	}
 	get()->map_y = i;

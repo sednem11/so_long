@@ -12,12 +12,12 @@
 
 #include "../so_long.h"
 
-void	free_map()
+void	free_map(void)
 {
-	int		i;
+	int	i;
 
 	i = 0;
-	while(get()->map[i])
+	while (get()->map[i])
 	{
 		free(get()->map[i]);
 		i++;
@@ -25,7 +25,7 @@ void	free_map()
 	free(get()->map);
 }
 
-void	mlx_end()
+void	mlx_end(void)
 {
 	mlx_do_key_autorepeaton(get()->mlx);
 	mlx_destroy_window(get()->mlx, get()->window);

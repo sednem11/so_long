@@ -15,12 +15,12 @@
 void	map(int fd)
 {
 	char	*temp;
-	int j;
+	int		j;
 
 	j = 0;
 	get()->map = (char **)ft_calloc(get()->map_y + 1, sizeof(char *));
 	temp = get_next_line(fd);
-	while(j < get()->map_y && temp)
+	while (j < get()->map_y && temp)
 	{
 		get()->map[j] = ft_strtrim(temp, "\n ");
 		j++;
@@ -30,7 +30,6 @@ void	map(int fd)
 	get()->map[get()->map_y] = NULL;
 	free(temp);
 }
-
 
 /*
 

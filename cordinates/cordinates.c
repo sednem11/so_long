@@ -12,9 +12,9 @@
 
 #include "../so_long.h"
 
-void	player_cordinates()
+void	player_cordinates(void)
 {
-	char *temp;
+	char	*temp;
 
 	get()->j = 0;
 	while (get()->j < get()->map_y)
@@ -23,8 +23,8 @@ void	player_cordinates()
 		temp = get()->map[get()->j];
 		while (get()->i < get()->map_x)
 		{
-			if (temp[get()->i] == 'P' ||
-				temp[get()->i] == 'y' || temp[get()->i] == 'a')
+			if (temp[get()->i] == 'P' || temp[get()->i] == 'y'
+				|| temp[get()->i] == 'a')
 			{
 				get()->px = get()->i;
 				get()->py = get()->j;
