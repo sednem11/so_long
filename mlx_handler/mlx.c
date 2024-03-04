@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: macampos <macampos@student.42.fr>          +#+  +:+       +#+        */
+/*   By: macampos <mcamposmendes@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 11:52:03 by macampos          #+#    #+#             */
-/*   Updated: 2024/03/02 20:14:53 by macampos         ###   ########.fr       */
+/*   Updated: 2024/03/03 20:03:54 by macampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,24 +17,23 @@ void	move_count()
 	int		a;
 	int		b;
 	int		c;
-	int		count;
 	
 	a = 5;
 	b = 5;
 	c = 5;
-	count = 0;
-	if (c < 14)
-	{
-		if (b < 14)
-		{
-			if (a < 14)
-			{
-				while ( 5 + get()->moves > 14)
-					
-				a += get()->moves;
-			}
+	a += get()->moves;
+		while (a > 14)
+		{		
+			a -= 10;
+			b += 1;	
 		}
-	}
+		while (b > 14)
+		{
+			b -= 10;
+			c += 1;
+		}
+		while (c > 14)
+			c -=10;
 	rendering(&get()->images[a], &get()->images[2], (get()->map_x - 1), 0, 0, 0);
 	rendering(&get()->images[b], &get()->images[2], (get()->map_x - 2), 0, 0, 0);
 	rendering(&get()->images[c], &get()->images[2], (get()->map_x - 3), 0, 0, 0);
@@ -49,14 +48,48 @@ int	handel_input(int keysym)
 		return (0);
 	}
 	if (keysym == XK_w)
+	{
 		change_player(1);
+		rendering_map(17);
+	}
 	if (keysym == XK_a)
+	
+	{
 		change_player(2);
+		rendering_map(17);
+	}
 	if (keysym == XK_s)
+	{
 		change_player(3);
+		rendering_map(17);
+	}
 	if (keysym == XK_d)
+	{
 		change_player(4);
-	rendering_map();
+		rendering_map(17);
+	}
+	return (1);
+}
+
+int	handel_input2(int keysym)
+{
+	if (keysym == XK_w)
+	{
+		rendering_map(0);
+	}
+	if (keysym == XK_a)
+	
+	{
+		rendering_map(0);
+	}
+	if (keysym == XK_s)
+	{
+		rendering_map(0);
+	}
+	if (keysym == XK_d)
+	{
+		rendering_map(0);
+	}
 	return (1);
 }
 
@@ -110,7 +143,8 @@ void	mlx_start(void)
 	get()->mlx = mlx_init();
 	init_mlx_window();
 	init_mlx_images();
-	rendering_map();
+	rendering_map(0);
 	mlx_hook(get()->window, 2, (1L << 0), handel_input, NULL);
+	mlx_key_hook(get()->window, handel_input2, NULL);
 	mlx_loop(get()->mlx);
 }

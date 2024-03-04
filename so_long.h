@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: macampos <macampos@student.42.fr>          +#+  +:+       +#+        */
+/*   By: macampos <mcamposmendes@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 18:48:24 by macampos          #+#    #+#             */
-/*   Updated: 2024/03/02 19:26:36 by macampos         ###   ########.fr       */
+/*   Updated: 2024/03/03 19:53:27 by macampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	mlx_start();
 void	player_cordinates();
 void	print_map(char **map);
 void	mlx_end();
-void	rendering_map();
+void	rendering_map(int move);
 void	my_pixel_put(t_image **image, int x , int y, int color);
 void	create_image_ptr(t_image **image, char *file);
 void	create_images();

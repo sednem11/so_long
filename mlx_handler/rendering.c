@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rendering.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: macampos <macampos@student.42.fr>          +#+  +:+       +#+        */
+/*   By: macampos <mcamposmendes@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 11:18:10 by macampos          #+#    #+#             */
-/*   Updated: 2024/03/02 19:43:57 by macampos         ###   ########.fr       */
+/*   Updated: 2024/03/03 19:51:24 by macampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ void	check_exit(int y, int x)
 	}
 }
 
-void	rendering_map()
+void	rendering_map(int move)
 {
 	int	x;
 	int	y;
@@ -126,7 +126,7 @@ void	rendering_map()
 			if (get()->map[y][x] != '1')
 				rendering(&get()->images[0], &get()->images[2], x, y, 2, 2);
 			if (get()->map[y][x] == 'y')
-				rendering(&get()->images[1], &get()->images[2], x, y, 0, 0);
+				rendering(&get()->images[1], &get()->images[2], x, y, move, 0);
 			if (get()->map[y][x] == 'c')
 				rendering(&get()->images[3], &get()->images[2], x, y, 0, 5);
 			if (get()->map[y][x] == 'f')
