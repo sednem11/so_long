@@ -6,7 +6,7 @@
 /*   By: macampos <macampos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 17:27:09 by macampos          #+#    #+#             */
-/*   Updated: 2024/03/02 19:36:40 by macampos         ###   ########.fr       */
+/*   Updated: 2024/03/04 18:04:48 by macampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	create_image_addr(t_image *image)
 	if (!image->image_pixel)
 	{
 		ft_printf("image_pixel");
-		mlx_end();
+		mlx_end(0);
 		exit(1);
 	}
 }
@@ -31,7 +31,7 @@ void	create_image_ptr(t_image **image, char *file)
 	if (!(*image)->img)
 	{
 		ft_printf("ERROR\n");
-		mlx_end();
+		mlx_end(0);
 		exit(1);
 	}
 	create_image_addr(*image);
@@ -43,7 +43,7 @@ void	create_image_ptr2(t_image **image, int width, int height)
 	if (!(*image)->img)
 	{
 		ft_printf("ERROR\n");
-		mlx_end();
+		mlx_end(0);
 		exit(1);
 	}
 	create_image_addr(*image);

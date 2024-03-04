@@ -6,14 +6,14 @@
 #    By: macampos <macampos@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/27 18:38:34 by macampos          #+#    #+#              #
-#    Updated: 2024/03/02 19:38:03 by macampos         ###   ########.fr        #
+#    Updated: 2024/03/04 19:56:23 by macampos         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
 
 SRCS = main/so_long.c main/parcing_helpper.c mlx_handler/mlx.c map_size/map_size_y.c map_size/map.c cordinates/cordinates.c mlx_handler/mlx_end.c  mlx_handler/rendering.c  \
-		mlx_handler/creating_images.c mlx_handler/end_game.c \
+		mlx_handler/creating_images.c mlx_handler/end_game.c mlx_handler/changing_map.c mlx_handler/mlx_helper.c  \
 
 OBJS = $(SRCS:.c=.o)
 

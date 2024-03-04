@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: macampos <mcamposmendes@gmail.com>         +#+  +:+       +#+        */
+/*   By: macampos <macampos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 18:48:24 by macampos          #+#    #+#             */
-/*   Updated: 2024/03/03 19:53:27 by macampos         ###   ########.fr       */
+/*   Updated: 2024/03/04 19:42:38 by macampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ typedef struct s_data
 	int		colectable2;
 	int		exit2;
 	int		i;
+	int		x;
 	int		j;
 	int		px;
 	int		py;
@@ -65,7 +66,7 @@ typedef struct s_data
 t_data	*get(void);
 
 void	put_image_to_window(t_image **image, int x, int y);
-int		my_pixel_get(t_image *image, int x, int y, int positionx, int positiony);
+int		my_pixel_get(t_image *image, int x, int y, int i);
 void	create_image_addr(t_image *image);
 void	get_xy(int fd);
 void	map(int fd);
@@ -75,17 +76,21 @@ void	check_if_squared();
 void	mlx_start();
 void	player_cordinates();
 void	print_map(char **map);
-void	mlx_end();
+void	mlx_end(int	esc);
 void	rendering_map(int move);
 void	my_pixel_put(t_image **image, int x , int y, int color);
 void	create_image_ptr(t_image **image, char *file);
 void	create_images();
 void	change_player(int	direction);
-int		player_colectable_exit2();
+void	player_colectable_exit2();
 void	end_game(int direction, int x, int y);
 void	end_game2(int direction, int x, int y);
-void	rendering(t_image **image, t_image **image2, int positionx,
-		int positiony, int i, int j);
+void	rendering(t_image **image, int positionx, int positiony, int i);
 void	move_count();
+void	change_player(int direction);
+void	check_exit(int y, int x);
+void	init_mlx_images(void);
+int		help_find_position(int i);
+int		help_find_position2(int i);
 
 #endif

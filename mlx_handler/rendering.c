@@ -3,82 +3,66 @@
 /*                                                        :::      ::::::::   */
 /*   rendering.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: macampos <mcamposmendes@gmail.com>         +#+  +:+       +#+        */
+/*   By: macampos <macampos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 11:18:10 by macampos          #+#    #+#             */
-/*   Updated: 2024/03/03 19:51:24 by macampos         ###   ########.fr       */
+/*   Updated: 2024/03/04 19:42:47 by macampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-int	help_change_player(int direction, int x, int y)
+int	help_find_position2(int i)
 {
-	while (get()->map[y][x])
-	{
-		if ((get()->map[y][x] == 'y' || get()->map[y][x] == 'a')
-			&& (get()->map[y][x + 1] != '1' || direction != 4)
-			&& (get()->map[y][x - 1] != '1' || direction != 2) && (get()->map[y
-				+ 1][x] != '1' || direction != 3) && (get()->map[y
-				- 1][x] != '1' || direction != 1))
-		{
-			get()->moves++;
-			end_game2(direction, x, y);
-			end_game(direction, x, y);
-			if (get()->map[y][x] == 'a')
-				get()->map[y][x] = 'e';
-			else
-				get()->map[y][x] = '2';
-			if (direction == 1 && get()->map[y - 1][x] != '1')
-			{
-				if (get()->map[y - 1][x] == 'e')
-					get()->map[y - 1][x] = 'a';
-				else
-					get()->map[y - 1][x] = 'y';
-			}
-			else if (direction == 2 && get()->map[y][x - 1] != '1')
-			{
-				if (get()->map[y][x - 1] == 'e')
-					get()->map[y][x - 1] = 'a';
-				else
-					get()->map[y][x - 1] = 'y';
-			}
-			else if (direction == 3 && get()->map[y + 1][x] != '1')
-			{
-				if (get()->map[y + 1][x] == 'e')
-					get()->map[y + 1][x] = 'a';
-				else
-					get()->map[y + 1][x] = 'y';
-			}
-			else if (direction == 4 && get()->map[y][x + 1] != '1'
-				&& get()->map[y][x + 1] == 'e')
-				get()->map[y][x + 1] = 'a';
-			else if (direction == 4 && get()->map[y][x + 1] != '1'
-				&& get()->map[y][x + 1] != 'e')
-				get()->map[y][x + 1] = 'y';
-			return (1);
-		}
-		x++;
-	}
+	if (i == 0)
+		return (9);
+	if (i == 1)
+		return (2);
+	if (i == 2)
+		return (5);
+	if (i == 3)
+		return (7);
+	if (i == 4)
+		return (0);
+	if (i == 5)
+		return (0);
+	if (i == 6)
+		return (6);
+	if (i == 7)
+		return (5);
+	if (i == 8)
+		return (3);
+	if (i == 9)
+		return (4);
 	return (0);
 }
 
-void	change_player(int direction)
+int	help_find_position(int i)
 {
-	int	y;
-	int	check;
-
-	check = 0;
-	y = 0;
-	while (get()->map[y] && check == 0)
-	{
-		check = help_change_player(direction, 0, y);
-		y++;
-	}
+	if (i == 0)
+		return (12);
+	if (i == 1)
+		return (2);
+	if (i == 2)
+		return (0);
+	if (i == 3)
+		return (5);
+	if (i == 4)
+		return (0);
+	if (i == 5)
+		return (17);
+	if (i == 6)
+		return (1);
+	if (i == 7)
+		return (1);
+	if (i == 8)
+		return (1);
+	if (i == 9)
+		return (1);
+	return (0);
 }
 
-void	rendering(t_image **image, t_image **image2, int positionx,
-		int positiony, int i, int j)
+void	rendering(t_image **image, int positionx, int positiony, int i)
 {
 	int	y;
 	int	x;
@@ -90,23 +74,33 @@ void	rendering(t_image **image, t_image **image2, int positionx,
 		x = 0;
 		while (x < 32)
 		{
-			color = my_pixel_get((*image), x, y, i, j);
+			color = my_pixel_get((*image), x, y, i);
 			if (color != -16777216)
-				my_pixel_put(image2, x + (SCALE * positionx), y + (SCALE
-						* positiony), color);
+				my_pixel_put(&get()->images[2], x + (SCALE * positionx), y
+					+ (SCALE * positiony), color);
 			x++;
 		}
 		y++;
 	}
 }
 
-void	check_exit(int y, int x)
+void	help_rendering_map(int y, int x, int move)
 {
-	if (get()->map[y][x] == 'e')
+	if (get()->map[y][x] == '1')
+		rendering(&get()->images[4], x, y, 0);
+	if (get()->map[y][x] != '1')
+		rendering(&get()->images[0], x, y, 1);
+	if (get()->map[y][x] == 'c')
+		rendering(&get()->images[3], x, y, 2);
+	if (get()->map[y][x] == 'y')
+		rendering(&get()->images[1], x, y, move);
+	if (get()->map[y][x] == 'f')
+		rendering(&get()->images[3], x, y, 3);
+	if (get()->map[y][x] == 'a')
 	{
-		player_colectable_exit2();
 		if (get()->colectable2 == 0)
-			rendering(&get()->images[4], &get()->images[2], x, y, 12, 9);
+			rendering(&get()->images[4], x, y, 0);
+		rendering(&get()->images[1], x, y, 4);
 	}
 }
 
@@ -121,23 +115,7 @@ void	rendering_map(int move)
 		x = 0;
 		while (x < get()->map_x)
 		{
-			if (get()->map[y][x] == '1')
-				rendering(&get()->images[4], &get()->images[2], x, y, 12, 9);
-			if (get()->map[y][x] != '1')
-				rendering(&get()->images[0], &get()->images[2], x, y, 2, 2);
-			if (get()->map[y][x] == 'y')
-				rendering(&get()->images[1], &get()->images[2], x, y, move, 0);
-			if (get()->map[y][x] == 'c')
-				rendering(&get()->images[3], &get()->images[2], x, y, 0, 5);
-			if (get()->map[y][x] == 'f')
-				rendering(&get()->images[3], &get()->images[2], x, y, 5, 7);
-			if (get()->map[y][x] == 'a')
-			{
-				if (get()->colectable2 == 0)
-					rendering(&get()->images[4], &get()->images[2], x, y, 12,
-						9);
-				rendering(&get()->images[1], &get()->images[2], x, y, 0, 0);
-			}
+			help_rendering_map(y, x, move);
 			check_exit(y, x);
 			x++;
 		}

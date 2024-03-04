@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   parcing_helpper.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: macampos <mcamposmendes@gmail.com>         +#+  +:+       +#+        */
+/*   By: macampos <macampos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 14:49:43 by macampos          #+#    #+#             */
-/*   Updated: 2024/03/01 19:39:33 by macampos         ###   ########.fr       */
+/*   Updated: 2024/03/04 17:39:18 by macampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-int	player_colectable_exit2(void)
+void	player_colectable_exit2(void)
 {
 	get()->player2 = 0;
 	get()->colectable2 = 0;
@@ -39,7 +39,6 @@ int	player_colectable_exit2(void)
 		}
 		get()->j++;
 	}
-	return (0);
 }
 
 void	check_if_squared(void)
@@ -63,8 +62,8 @@ int	player_colectable_exit(void)
 	get()->j = 0;
 	while (get()->j < get()->map_y)
 	{
-		get()->i = 0;
-		while (get()->i < get()->map_x)
+		get()->i = -1;
+		while (get()->i++ < get()->map_x)
 		{
 			if (get()->map[get()->j][get()->i] == 'P')
 				get()->player++;
@@ -76,7 +75,6 @@ int	player_colectable_exit(void)
 				get()->ey = get()->j;
 				get()->exit++;
 			}
-			get()->i++;
 		}
 		get()->j++;
 	}
