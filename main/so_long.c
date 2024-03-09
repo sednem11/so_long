@@ -6,7 +6,7 @@
 /*   By: macampos <macampos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 18:47:13 by macampos          #+#    #+#             */
-/*   Updated: 2024/02/25 20:03:06 by macampos         ###   ########.fr       */
+/*   Updated: 2024/03/08 18:22:54 by macampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,24 +28,24 @@ void	parsing(int fd, char *av)
 	while (av[get()->i] != '.')
 	{
 		get()->i++;
-		*av = av[get()->i];
 	}
+	av = &av[get()->i];
 	avv = av;
-	if (ft_strnstr(avv, ".ber", 4) != 0)
+	if (ft_strncmp(avv, ".ber", 4) != 0)
 	{
 		perror("map is not .ber");
-		exit(1);
+		end_before(0);
 	}
 	check_if_squared();
 	if (player_colectable_exit() == -1)
 	{
 		perror("to many or none exits/players");
-		exit(1);
+		end_before(0);
 	}
 	player_cordinates();
 	floodfill(get()->map, get()->px, get()->py);
 	if (get()->c != get()->colectable || get()->e != get()->exit)
-		exit(1);
+		end_before(1);
 }
 
 void	print_map(char **map)
@@ -60,6 +60,8 @@ void	print_map(char **map)
 int	main(int argc, char **argv)
 {
 	if (argc != 2)
+		return (0);
+	if (open(argv[1], O_RDONLY) == -1)
 		return (0);
 	get_xy(open(argv[1], O_RDONLY));
 	map(open(argv[1], O_RDONLY));

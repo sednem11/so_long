@@ -6,11 +6,19 @@
 /*   By: macampos <macampos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/02 17:37:11 by macampos          #+#    #+#             */
-/*   Updated: 2024/03/04 19:20:47 by macampos         ###   ########.fr       */
+/*   Updated: 2024/03/05 15:52:05 by macampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
+
+void	end_before(int z)
+{
+	free_map();
+	if (z == 1)
+		ft_printf("player couldnt get to every colectable or exit\n");
+	exit(1);
+}
 
 void	check_exit(int y, int x)
 {

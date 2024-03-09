@@ -6,7 +6,7 @@
 /*   By: macampos <macampos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 18:48:24 by macampos          #+#    #+#             */
-/*   Updated: 2024/03/05 14:01:14 by macampos         ###   ########.fr       */
+/*   Updated: 2024/03/05 15:25:24 by macampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,8 @@ typedef struct s_data
 
 t_data	*get(void);
 
+void	end_before(int z);
+void	free_map(void);
 void	put_image_to_window(t_image **image, int x, int y);
 int		my_pixel_get(t_image *image, int x, int y, int i);
 void	create_image_addr(t_image *image);

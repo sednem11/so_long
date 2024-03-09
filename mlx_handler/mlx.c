@@ -6,36 +6,16 @@
 /*   By: macampos <macampos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 11:52:03 by macampos          #+#    #+#             */
-/*   Updated: 2024/03/04 20:02:09 by macampos         ###   ########.fr       */
+/*   Updated: 2024/03/08 14:38:28 by macampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-void	move_count(void)
+int	last_handel_input(void)
 {
-	int	b;
-	int	c;
-
-	get()->i = 5;
-	b = 5;
-	c = 5;
-	get()->i += get()->moves;
-	while (get()->i > 14)
-	{
-		get()->i -= 10;
-		b += 1;
-	}
-	while (b > 14)
-	{
-		b -= 10;
-		c += 1;
-	}
-	while (c > 14)
-		c -= 10;
-	rendering(&get()->images[get()->i], (get()->map_x - 1), 0, 4);
-	rendering(&get()->images[b], (get()->map_x - 2), 0, 4);
-	rendering(&get()->images[c], (get()->map_x - 3), 0, 4);
+	mlx_end(0);
+	return (1);
 }
 
 int	handel_input(int keysym)
@@ -67,6 +47,7 @@ int	handel_input(int keysym)
 
 int	handel_input2(int keysym)
 {
+	ft_printf("%i\n", get()->moves);
 	if (keysym == XK_w)
 	{
 		rendering_map(4);
@@ -106,6 +87,7 @@ void	mlx_start(void)
 	init_mlx_window();
 	init_mlx_images();
 	rendering_map(4);
+	mlx_hook(get()->window, 17, 0, last_handel_input, NULL);
 	mlx_hook(get()->window, 2, (1L << 0), handel_input, NULL);
 	mlx_key_hook(get()->window, handel_input2, NULL);
 	mlx_loop(get()->mlx);

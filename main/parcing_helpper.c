@@ -6,11 +6,33 @@
 /*   By: macampos <macampos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 14:49:43 by macampos          #+#    #+#             */
-/*   Updated: 2024/03/04 17:39:18 by macampos         ###   ########.fr       */
+/*   Updated: 2024/03/05 15:49:21 by macampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
+
+void	check_walls(void)
+{
+	int	x;
+	int	z;
+
+	z = (get()->map_y - 1);
+	x = 0;
+	while (get()->map[0][x])
+	{
+		if (get()->map[0][x] != '1')
+			end_before(0);
+		x++;
+	}
+	x = 0;
+	while (x < get()->map_x)
+	{
+		if (get()->map[z][x] != '1')
+			end_before(0);
+		x++;
+	}
+}
 
 void	player_colectable_exit2(void)
 {
@@ -49,9 +71,10 @@ void	check_if_squared(void)
 	while (i < get()->map_y)
 	{
 		if ((int)ft_strlen(get()->map[i]) != (int)ft_strlen(get()->map[0]))
-			exit(1);
+			end_before(0);
 		i++;
 	}
+	check_walls();
 }
 
 int	player_colectable_exit(void)
@@ -89,8 +112,8 @@ void	floodfill(char **map, int x, int y)
 		|| map[y][x] == 'c' || map[y][x] == 'p' || map[y][x] == 'y'
 		|| map[y][x] == 'f')
 		return ;
-	if (y > get()->map_y || x > get()->map_x || y < 0 || x < 0)
-		exit(1);
+	if (y >= get()->map_y || x >= get()->map_x || y <= 0 || x <= 0)
+		end_before(0);
 	map[get()->py][get()->px] = 'y';
 	if (map[y][x] == 'C')
 	{
