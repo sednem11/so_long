@@ -6,7 +6,7 @@
 /*   By: macampos <macampos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 18:47:13 by macampos          #+#    #+#             */
-/*   Updated: 2024/03/08 18:22:54 by macampos         ###   ########.fr       */
+/*   Updated: 2024/03/08 14:30:12 by macampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@ void	parsing(int fd, char *av)
 	while (av[get()->i] != '.')
 	{
 		get()->i++;
+		*av = av[get()->i];
 	}
-	av = &av[get()->i];
 	avv = av;
-	if (ft_strncmp(avv, ".ber", 4) != 0)
+	if (ft_strnstr(avv, ".ber", 4) != 0)
 	{
 		perror("map is not .ber");
 		end_before(0);
